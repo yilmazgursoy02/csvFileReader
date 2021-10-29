@@ -35,9 +35,12 @@ func main() {
 	for _, value := range csvText {
 		hours := fmt.Sprintf("%s,%s", value.fistName, value.lastName)
 		dataList[hours] += value.workingHours
-
 	}
-	fmt.Println(dataList)
+
+	for key, value := range dataList {
+		s := fmt.Sprintf("%s,%d", key, value)
+		fmt.Println(s)
+	}
 
 }
 func ReadCsv(filename string) ([][]string, error) {
