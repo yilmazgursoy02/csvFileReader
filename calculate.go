@@ -28,9 +28,8 @@ func main() {
 		log.Fatal("You must provide arguments. Run the command as ./calculate <input_file> <output_file> <order>")
 	}
 	err := Calculate(args[0], args[1], args[2])
-	if err != nil {
-		log.Fatalf("failed to calculate:%s", err.Error())
-	}
+	CheckError("failed to calculate:", err)
+
 }
 func Calculate(inputFile string, resultFileName string, order string) error {
 	data := make(map[CsvText]int)
@@ -48,9 +47,7 @@ func Calculate(inputFile string, resultFileName string, order string) error {
 	}
 
 	sortData, err := SortData(dataList, order)
-	if err != nil {
-		return err
-	}
+	CheckError("Sort data error:", err)
 
 	if err := WriterCsv(sortData, resultFileName); err != nil {
 		return err
