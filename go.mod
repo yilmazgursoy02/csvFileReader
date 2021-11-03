@@ -1,3 +1,3 @@
-module csvFileReader
+module csvfilereader
 
 go 1.17
